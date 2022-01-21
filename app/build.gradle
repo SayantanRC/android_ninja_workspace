@@ -55,6 +55,8 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$dagger_version"
     kapt "com.google.dagger:hilt-compiler:$dagger_version"
 
+    implementation 'androidx.activity:activity-ktx:1.4.0'
+
     def lifecycleVersion = "2.4.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
 }
