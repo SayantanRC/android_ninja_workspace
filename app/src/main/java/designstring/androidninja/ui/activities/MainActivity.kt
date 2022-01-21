@@ -1,7 +1,8 @@
-package designstring.androidninja
+package designstring.androidninja.ui.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import designstring.androidninja.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
