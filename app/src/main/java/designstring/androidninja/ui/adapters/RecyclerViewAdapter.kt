@@ -2,6 +2,9 @@ package designstring.androidninja.ui.adapters
 
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import designstring.androidninja.R
@@ -20,6 +23,7 @@ class RecyclerViewAdapter(private val items: List<DomainEntity>): RecyclerView.A
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterItem {
         val view = View.inflate(parent.context, R.layout.recycler_view_item, null)
+        view.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         return AdapterItem(view)
     }
 
