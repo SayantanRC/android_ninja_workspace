@@ -62,21 +62,21 @@ class MainActivity : AppCompatActivity() {
          * view model is empty.
          * If it is not empty, then the function will not run.
          */
-        tryIt({
             lifecycleScope.launch {
+                tryIt({
                 viewModel.initPeopleSet()
-            }
-        }, this@MainActivity)
+            }, this@MainActivity)
+        }
 
         /**
          * On clicking `Load More` load the next page.
          */
         binding.loadMoreButton.setOnClickListener {
-            tryIt({
                 lifecycleScope.launch {
+                    tryIt({
                     viewModel.getNextSetOfPeople()
-                }
-            }, this)
+                }, this@MainActivity)
+            }
         }
     }
 }
