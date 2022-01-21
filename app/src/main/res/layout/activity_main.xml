@@ -18,16 +18,18 @@
         tools:listitem="@layout/recycler_view_item"
         />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/load_more_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="10dp"
         android:backgroundTint="?android:attr/colorAccent"
         android:text="@string/load_more"
         android:textAllCaps="false"
         android:textColor="@color/white"
+        app:cornerRadius="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
