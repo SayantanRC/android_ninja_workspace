@@ -10,7 +10,7 @@ import designstring.androidninja.domain.models.DomainEntity
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel
+class MainViewModel_old
 @Inject
 constructor(
     private val networkEntityMapper: NetworkEntityMapper,
