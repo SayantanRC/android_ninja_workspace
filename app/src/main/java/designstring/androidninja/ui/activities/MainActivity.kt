@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
+    /**
+     * Store all people details.
+     */
     private val allPeopleList = ArrayList<DomainEntity>(0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +30,20 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        /**
+         * Set recycler view adapter
+         */
         val adapter = RecyclerViewAdapter(allPeopleList)
         binding.peopleList.apply {
             this.adapter = adapter
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
 
+        /**
+         * Observe change of data from view model.
+         * If new data is received, update [allPeopleList],
+         * notify the recyclerview adapter of the change.
+         */
         viewModel.listOfPeopleLiveData.observe(this){
             val receivedList = it.first
             val position = it.second
@@ -44,12 +55,22 @@ class MainActivity : AppCompatActivity() {
             adapter.notifyItemRangeChanged(position, itemCount)
         }
 
+        /**
+         * On create initialise the people set.
+         * On screen rotation this method will be called again,
+         * but the function `initPeopleSet()` runs only if the data set in the
+         * view model is empty.
+         * If it is not empty, then the function will not run.
+         */
         tryIt({
             lifecycleScope.launch {
                 viewModel.initPeopleSet()
             }
         }, this@MainActivity)
 
+        /**
+         * On clicking `Load More` load the next page.
+         */
         binding.loadMoreButton.setOnClickListener {
             tryIt({
                 lifecycleScope.launch {
