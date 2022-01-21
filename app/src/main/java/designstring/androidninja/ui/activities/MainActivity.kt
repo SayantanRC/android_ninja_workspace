@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import designstring.androidninja.R
 import designstring.androidninja.databinding.ActivityMainBinding
@@ -28,7 +29,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = RecyclerViewAdapter(peopleList)
-        binding.peopleList.adapter = adapter
+        binding.peopleList.apply {
+            this.adapter = adapter
+            layoutManager = LinearLayoutManager(this@MainActivity)
+        }
 
         viewModel.listOfPeopleLiveData.observe(this){
             peopleList.addAll(it)
