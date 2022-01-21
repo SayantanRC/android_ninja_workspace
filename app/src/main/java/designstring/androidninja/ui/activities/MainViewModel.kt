@@ -7,9 +7,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import designstring.androidninja.data.Repository
 import designstring.androidninja.domain.mappers.NetworkEntityMapper
 import designstring.androidninja.domain.models.DomainEntity
+import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel
+@Inject
 constructor(
     private val networkEntityMapper: NetworkEntityMapper,
     private val repository: Repository,
