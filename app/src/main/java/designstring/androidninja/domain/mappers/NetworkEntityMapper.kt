@@ -16,4 +16,10 @@ constructor()
             otherEntity.avatar,
         )
     }
+
+    override fun toDomainEntityList(otherEntities: List<NetworkEntityPeople>): List<DomainEntity> {
+        return otherEntities.map {
+            toDomainEntity(it)
+        }
+    }
 }

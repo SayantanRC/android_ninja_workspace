@@ -8,5 +8,6 @@ package designstring.androidninja.domain.interfaces
 interface EntityMapper<Entity, DomainEntity> {
 
     fun toDomainEntity(otherEntity: Entity): DomainEntity
+    fun toDomainEntityList(otherEntities: List<Entity>): List<DomainEntity>
 
 }
