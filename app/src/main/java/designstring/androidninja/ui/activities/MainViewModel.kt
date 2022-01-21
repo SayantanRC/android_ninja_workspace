@@ -35,8 +35,10 @@ constructor(
     }
 
     suspend fun initPeopleSet(){
-        pageNumber = 1
-        getNextSetOfPeople()
+        if (peopleList.isEmpty()) {
+            pageNumber = 1
+            getNextSetOfPeople()
+        }
     }
 
 }
