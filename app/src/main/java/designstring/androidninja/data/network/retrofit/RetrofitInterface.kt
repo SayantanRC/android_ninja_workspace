@@ -1,6 +1,6 @@
-package designstring.androidninja.data.retrofit
+package designstring.androidninja.data.network.retrofit
 
-import designstring.androidninja.data.models.NetworkEntity
+import designstring.androidninja.data.network.models.NetworkEntity
 import retrofit2.http.GET
 import retrofit2.http.Query
 

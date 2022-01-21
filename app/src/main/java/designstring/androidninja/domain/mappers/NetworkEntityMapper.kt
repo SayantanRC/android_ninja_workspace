@@ -1,6 +1,6 @@
 package designstring.androidninja.domain.mappers
 
-import designstring.androidninja.data.models.NetworkEntityPeople
+import designstring.androidninja.data.network.models.NetworkEntityPeople
 import designstring.androidninja.domain.interfaces.EntityMapper
 import designstring.androidninja.domain.models.DomainEntity
 

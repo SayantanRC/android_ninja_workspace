@@ -1,4 +1,4 @@
-package designstring.androidninja.data.models
+package designstring.androidninja.data.network.models
 
 import com.google.gson.annotations.SerializedName
 

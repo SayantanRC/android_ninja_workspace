@@ -1,4 +1,4 @@
-package designstring.androidninja.data.models
+package designstring.androidninja.data.network.models
 
 data class NetworkEntityPeople(
     val avatar: String,

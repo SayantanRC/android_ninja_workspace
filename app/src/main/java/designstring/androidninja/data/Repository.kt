@@ -1,7 +1,7 @@
 package designstring.androidninja.data
 
-import designstring.androidninja.data.models.NetworkEntityPeople
-import designstring.androidninja.data.retrofit.retrofitImpl
+import designstring.androidninja.data.network.models.NetworkEntityPeople
+import designstring.androidninja.data.network.retrofit.retrofitImpl
 import javax.inject.Inject
 
 class Repository
