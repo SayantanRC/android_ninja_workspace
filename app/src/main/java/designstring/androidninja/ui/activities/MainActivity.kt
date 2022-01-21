@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel : MainViewModel by viewModels()
+    private val viewModel : MainViewModelUsingSharedFlow by viewModels()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -39,12 +39,9 @@ class MainActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@MainActivity)
         }
 
-        /**
-         * Observe change of data from view model.
-         * If new data is received, update [allPeopleList],
-         * notify the recyclerview adapter of the change.
-         */
-        viewModel.listOfPeopleLiveData.observe(this){
+        //OLD CODE using live data
+        /*
+        viewModel.listOfPeopleLiveData.observe(this) {
             val receivedList = it.first
             val position = it.second
             val itemCount = it.third
@@ -53,6 +50,18 @@ class MainActivity : AppCompatActivity() {
                 addAll(receivedList)
             }
             adapter.notifyItemRangeChanged(position, itemCount)
+        }*/
+
+        /**
+         * Observe flow of new domain entities.
+         * When new entries are received, add it to [allPeopleList],
+         * then notify adapter of new item position.
+         */
+        lifecycleScope.launch {
+            viewModel.peopleFlow.collect {
+                allPeopleList.add(it)
+                adapter.notifyItemInserted(allPeopleList.size - 1)
+            }
         }
 
         /**
@@ -62,8 +71,8 @@ class MainActivity : AppCompatActivity() {
          * view model is empty.
          * If it is not empty, then the function will not run.
          */
-            lifecycleScope.launch {
-                tryIt({
+        lifecycleScope.launch {
+            tryIt({
                 viewModel.initPeopleSet()
             }, this@MainActivity)
         }
