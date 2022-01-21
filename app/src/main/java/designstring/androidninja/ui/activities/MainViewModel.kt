@@ -30,4 +30,9 @@ constructor(
         _listOfPeopleLiveData.value = peopleList
     }
 
+    suspend fun initPeopleSet(){
+        pageNumber = 1
+        getNextSetOfPeople()
+    }
+
 }
